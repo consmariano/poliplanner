@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}{% endblock %} | Blog
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" /> 
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"> 
+</head>
+
+<body>
+    <header id="cabecalho-principal">
+        <a href="{% url 'home' %}">
+            <p>Home</p>
+        </a>
+        <nav id="navegacao-principal">
+            <ul>
+                <li><a href="{% url 'posts' %}">Posts</a></li>
+            </ul>
+        </nav>
+
+    </header>
+    <main id="conteiner-principal">
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer id="rodape-principal">
+        <p>
+            <small>Copyright 2023</small>
+        </p>
+    </footer>
+</body>
+
+</html>
