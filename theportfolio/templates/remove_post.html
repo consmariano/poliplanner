@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Excluir Item</h1>
+
+  {% if confirmar_exclusao %}
+    <p>Você tem certeza que deseja excluir "{{ post.title }}"?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Sim, excluir</button>
+    </form>
+    <a href="{% url 'post_list' %}">Cancelar</a>
+  {% else %}
+    <p>O item foi excluído com sucesso.</p>
+    <a href="{% url 'post_list' %}">Voltar para a lista</a>
+  {% endif %}
+{% endblock %}

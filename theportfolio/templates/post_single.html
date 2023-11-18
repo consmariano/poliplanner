@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h1>{{ single_post.title }}</h1>
-    <p><small>Postado por: {{ single_post.author }}</small></p>
-    <p><small>Postado em: {{ single_post.post_date|date:"F j, Y H:i" }}</small></p>
+<h1>{{ post_single.title }}</h1>
+    <p><small>Postado por: {{ post_single.author }}</small></p>
+    <p><small>Postado em: {{ post_single.post_date|date:"F j, Y H:i" }}</small></p>
     <hr>
-    <p>{{ single_post.content }}</p>
+    <p>{{ post_single.content }}</p>
 
 {% endblock content %}
 
