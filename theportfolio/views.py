@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Comment, Category
+from .models import Post, Comment
 from django.urls import reverse_lazy
 from .forms import PostForm, CommentForm
 
@@ -29,25 +29,10 @@ class SinglePostDetailView(DetailView):
         except Http404:
             raise Http404("O item solicitado não existe.")
 
-class SingleCatsDetailView(DetailView):
-    model = Category
-    template_name = 'category_single.html'
-    context_object_name = 'category_single'
-
-    def get_object(self, queryset=None):
-        cats = self.kwargs['cats']
-        return get_object_or_404(Category, name=cats)
-
 class CreatePostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'create_post.html'
-    success_url = reverse_lazy('home')
-
-class CreateCategoryView(CreateView):
-    model = Category
-    fields = '__all__'
-    template_name = 'create_category.html'
     success_url = reverse_lazy('home')
 
 class AddCommentView(CreateView):
