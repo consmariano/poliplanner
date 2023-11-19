@@ -4,9 +4,12 @@
 {% block content %}
 <h1>Adicionar Post no Blog</h1>
 
+
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button>Postar</button>
+    
+    <button type="submit">Postar</button>
+
 
 {% endblock content %}
