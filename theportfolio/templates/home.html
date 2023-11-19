@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}
-Página Inicial
-{% endblock title %}
+{% block title %}Página Inicial{% endblock title %}
 
 {% block content %}
+
 <h1><i>Meu blog de indústria automotiva</i></h1>
-<p></p>
+    <p>Esse é um blog exclusivo para conteúdos da indústria automotiva.</p>
+    <li><a href="{% url 'post_list' %}">Leia nossos posts aqui.</a></li>
+    <li><a href="{% url 'create_post' %}">Crie o seu próprio post aqui.</a></li>
+    
+
 {% endblock content %}
