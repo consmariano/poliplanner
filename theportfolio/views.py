@@ -45,8 +45,6 @@ class AddCommentView(CreateView):
         form.instance.post = post
         success_url = reverse_lazy('home')
         return super().form_valid(form)
-    
-        
 
 class EditPostView(UpdateView):
     model = Post

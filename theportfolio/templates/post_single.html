@@ -22,14 +22,14 @@
     {% else %}
         <br><br>
         {% for comment in post_single.post_comments.all %}
-        <strong>
-            {{ comment.author.username }} 
-            -
-            {{ comment.post_date }}
+            <strong>
+                {{ comment.author.username }} 
+                -
+                {{ comment.post_date }}
+            </strong>
             <br>
-        </strong>
-        {{ comment.content }}
-        <br>
+            {{ comment.content }}
+            <br><br>
         {% endfor %}
     {% endif %}
     <br>
