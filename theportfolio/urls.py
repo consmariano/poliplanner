@@ -1,13 +1,7 @@
 from django.urls import path
 from . import views
-from .views import (
-    home,
-    post_list,
-    single_post,
-    create_post,
-    edit_post,
-    remove_post,
-)
+from .views import (home, post_list, single_post, create_post, edit_post, remove_post,)
+from .forms import PostForm
 #from .views import HomeView, PostsListView, SinglePostDetailView, EditPostView, CreatePostView, RemovePostView
 
 urlpatterns = [

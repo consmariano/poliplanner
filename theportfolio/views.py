@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+#from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Post
+from .forms import PostForm
 
 
 def home(request):
@@ -18,22 +19,27 @@ def single_post(request, pk):
 
 def create_post(request):
     if request.method == 'POST':
-        Post.objects.create(title=request.POST['title'], author=request.POST['author'], content=request.POST['content'])
-        return redirect('post_list')
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('post_list')
+    else:
+        form = PostForm()
 
-    return render(request, 'create_post.html')
+    return render(request, 'create_post.html', {'create_post': create_post})
 
 def edit_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
 
     if request.method == 'POST':
-        post.title = request.POST['title']
-        post.content = request.POST['content']
-        post.post_date = request.POST['post_date']
-        post.save()
-        return redirect('post_list')
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('post_list')
+    else:
+        form = PostForm(instance=post)
 
-    return render(request, 'edit_post.html', {'post': post})
+    return render(request, 'edit_post.html', {'edit_post': edit_post})
 
 def remove_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -42,7 +48,7 @@ def remove_post(request, pk):
         post.delete()
         return redirect('home')
 
-    return render(request, 'remove_post.html', {'post': post, 'confirmar_exclusao': True})
+    return render(request, 'remove_post.html', {'remove_post': remove_post, 'confirmar_exclusao': True})
 
 
 # class HomeView(ListView):
