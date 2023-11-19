@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Categoria{% endblock %}
+
+{% block content %}
+
+{% if category_posts  %}
+
+    <h1>{{ cats }} Categoria</h1>
+
+    {% for post in category_posts %}
+
+        <l1><a href="{% url 'post_single' pk=post.pk %}"><strong>{{ post.title }}</strong></a>
+            <br>
+            <small>
+                <a href="{% url 'edit_post' pk=post.pk %}">(Editar)</a>
+                <a href="{% url 'remove_post' pk=post.pk %}">(Remover)</a>
+            </small>
+        </li>
+        <div>
+            <p>Postado por: {{ post.author }}</p>
+            <p>Postado em: {{ post.post_date|date:"F j, Y H:i" }}</p>
+        </div>
+
+    {% endfor %}
+
+{% else %}
+        <h2>Ainda não há conteúdo dessa categoria.</h2>
+{% endif %}
+
+{% endblock content %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from django.urls import reverse_lazy
 from .forms import PostForm, CommentForm
 
@@ -16,6 +16,18 @@ class PostsListView(ListView):
     model = Post
     template_name = 'post_list.html'
     context_object_name = 'posts'
+
+class ListCategoriesView(ListView):
+    model = Category
+    template_name = 'list_categories.html'
+    context_object_name = 'list_categories'
+
+
+def CategoryView(request, cats):
+    category = get_object_or_404(Category, name=cats)
+    category_posts = Post.objects.filter(category=cats)
+    return render(request, 'categories.html', {'cats': cats.title(), 'category_posts': category_posts})
+
 
 class SinglePostDetailView(DetailView):
     model = Post
@@ -35,6 +47,12 @@ class CreatePostView(CreateView):
     template_name = 'create_post.html'
     success_url = reverse_lazy('home')
 
+class AddCategoryView(CreateView):
+    model = Category
+    fields = '__all__'
+    template_name = 'create_category.html'
+    success_url = reverse_lazy('home')
+
 class AddCommentView(CreateView):
     model = Comment
     form_class = CommentForm
@@ -50,7 +68,7 @@ class AddCommentView(CreateView):
 class EditPostView(UpdateView):
     model = Post
     template_name = 'edit_post.html'
-    fields = ['title', 'content', 'post_date']
+    fields = ['title', 'category', 'content', 'post_date']
 
 class RemovePostView(DeleteView):
     model = Post
