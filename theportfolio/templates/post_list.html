@@ -4,7 +4,12 @@
 <h1>Posts</h1>
 
 {% for post in posts %}
-    <l1><a href="{% url 'post_single' pk=post.pk %}">{{ post.title }} - <small><a href="{% url 'edit_post' pk=post.pk %}">(Editar)</a></small></a></li>
+    <l1><a href="{% url 'post_single' pk=post.pk %}">{{ post.title }}
+        - <small>
+            <a href="{% url 'edit_post' pk=post.pk %}">(Editar)</a>
+            <a href="{% url 'remove_post' pk=post.pk %}">(Remover)</a>
+        </small>
+    </a></li>
     <div>
         <p>Postado por: {{ post.author }}</p>
         <p>Postado em: {{ post.post_date|date:"F j, Y H:i" }}</p>

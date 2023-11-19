@@ -7,10 +7,10 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'author', 'content', 'post_date')
 
         widget = {
-            'title': form.TextInput(attrs={'class': 'form-control'}), 
-            'author': form.TextInput(attrs={'class': 'form-control'}), 
-            'content': form.TextInput(attrs={'class': 'form-control'}), 
-            'post_date': form.TextInput(attrs={'class': 'form-control'}), 
+            'title': forms.TextInput(attrs={'class': 'form-control'}), 
+            'author': forms.TextInput(attrs={'class': 'form-control'}), 
+            'content': forms.Select(attrs={'class': 'form-control'}), 
+            'post_date': forms.TextInput(attrs={'class': 'form-control'}), 
         }
 
     
