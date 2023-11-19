@@ -1,19 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Criar um novo Post no Blog{% endblock %}
+{% block title %}Criar novo Post{% endblock %}
 
 {% block content %}
   <h1>Adicionar Post no Blog</h1>
 
   <form method="POST">
     {% csrf_token %}
-    <p>Title: </p>
-    {{ form.title }}
-    
-    <p>Centent: </p>
-    {{ form.content }}
-    
-    <p>Date: </p>
-    {{ form.post_date }}
+    {{ form.as_p }}
     
     <button type="submit">Postar</button>
   </form>

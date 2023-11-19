@@ -31,9 +31,9 @@ class SinglePostDetailView(DetailView):
 
 class CreatePostView(CreateView):
     model = Post
-    #form_class = PostForm
+    form_class = PostForm
     template_name = 'create_post.html'
-    fields = '__all__'
+    success_url = reverse_lazy('home')
 
 class AddCommentView(CreateView):
     model = Comment
