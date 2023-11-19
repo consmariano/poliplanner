@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Comment
 from django.urls import reverse_lazy
+from .forms import PostForm, CommentForm
 
 
 class HomeView(ListView):
@@ -33,6 +34,19 @@ class CreatePostView(CreateView):
     #form_class = PostForm
     template_name = 'create_post.html'
     fields = '__all__'
+
+class AddCommentView(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'create_comment.html' 
+
+    def form_valid(self, form):
+        post = get_object_or_404(Post, pk=self.kwargs['pk'])
+        form.instance.post = post
+        success_url = reverse_lazy('home')
+        return super().form_valid(form)
+    
+        
 
 class EditPostView(UpdateView):
     model = Post
