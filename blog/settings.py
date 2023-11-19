@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'theportfolio.apps.TheportfolioConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
