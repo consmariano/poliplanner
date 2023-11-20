@@ -8,7 +8,11 @@
 {% for post in posts %}
     <l1><a href="{% url 'post_single' pk=post.pk %}"><strong>{{ post.title }}</strong></a>
         -
-        <a href="{% url 'categories' post.category %}"><small>{{ post.category }}</small></a>
+        {% for cat in post.category.all %}
+            <a href="{% url 'categories' cats=cat.id %}" class="badge text-decoration-none bg-secondary">
+            {{ cat }}
+            </a>
+        {% endfor %}
         <br>
         <small>
             <a href="{% url 'edit_post' pk=post.pk %}">(Editar)</a>

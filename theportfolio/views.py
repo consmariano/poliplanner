@@ -23,11 +23,23 @@ class ListCategoriesView(ListView):
     context_object_name = 'list_categories'
 
 
-def CategoryView(request, cats):
-    category = get_object_or_404(Category, name=cats)
-    category_posts = Post.objects.filter(category=cats)
-    return render(request, 'categories.html', {'cats': cats.title(), 'category_posts': category_posts})
+# def CategoryView(request, cats):
+#     category = get_object_or_404(Category, name=cats)
+#     category_posts = Post.objects.filter(category=cats)
+#     return render(request, 'categories.html', {'cats': cats.title(), 'category_posts': category_posts})
 
+def CategoryView(request, cats):
+
+    cat = get_object_or_404(Category, id=cats)
+    category_posts = Post.objects.filter(category=cat)
+
+    context = {
+        "cat_name": cat.name,
+        "category_posts": category_posts,
+        "categories": reverse('categories', kwargs={'cats': cat.id}),
+    }
+
+    return render(request, "categories.html", context)
 
 class SinglePostDetailView(DetailView):
     model = Post

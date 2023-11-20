@@ -9,7 +9,7 @@ from django.core.signals import setting_changed
 from django.dispatch import receiver
 
 class Category(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     content = models.TextField(default='text default.')
     
     def __str__(self):
@@ -23,7 +23,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     post_date = models.DateTimeField(default=timezone.now, blank=True)
-    category = models.CharField(max_length=255, default='uncategorized')
+    category = models.ManyToManyField(to=Category, related_name="posts", blank=True)
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)

@@ -8,7 +8,7 @@
 {% for category in list_categories %}
     <li>
         {% if category.name %}
-            <a href="{% url 'categories' cats=category.name %}">
+            <a href="{% url 'categories' cats=category.id %}">
                 {{ category.name }}
             </a>
         {% else %}
