@@ -1,3 +1,3 @@
-# blog-industria-automotiva
+# Poli Planner
 
-Esse blog foi criado como prática de técnicas de uso de Django framework para a disciplina de PMR3304 - Sistemas de Informação (2023).
+Esse projeto foi criado para a entrega final utilizando técnicas de uso de Django framework e React para a disciplina de PMR3304 - Sistemas de Informação (2023).
