@@ -7,49 +7,49 @@ from django.urls import reverse_lazy
 from .forms import PostForm, CommentForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from django.contrib.auth import login as login_django
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+#from django.contrib.auth import login as login_django
+#from django.contrib.auth.decorators import login_required
+#from django.utils.decorators import method_decorator
 from django.http import Http404
 
-def cadastro(request): 
-    if request.method == 'GET':
-        return render(request, 'cadastro.html')
-    else: 
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        senha = request.POST.get('senha')
-        user = User.objects.filter(username=username).first()
+# def cadastro(request): 
+#     if request.method == 'GET':
+#         return render(request, 'cadastro.html')
+#     else: 
+#         username = request.POST.get('username')
+#         email = request.POST.get('email')
+#         senha = request.POST.get('senha')
+#         user = User.objects.filter(username=username).first()
 
-        if user: 
-            return HttpResponse('Já existe um usuário com esse username.')
+#         if user: 
+#             return HttpResponse('Já existe um usuário com esse username.')
 
-        user = User.objects.create_user(username=username, email=email, password=senha)
-        user.save()
+#         user = User.objects.create_user(username=username, email=email, password=senha)
+#         user.save()
 
-        return HttpResponse('Usuário cadastrado com sucesso.')
+#         return HttpResponse('Usuário cadastrado com sucesso.')
 
 
-def login(request): 
-    if request.method == 'GET':
-        return render(request, 'login.html')
-    else: 
-        username = request.POST.get('username')
-        senha = request.POST.get('senha')
+# def login(request): 
+#     if request.method == 'GET':
+#         return render(request, 'login.html')
+#     else: 
+#         username = request.POST.get('username')
+#         senha = request.POST.get('senha')
 
-        user = authenticate(username=username, password=senha)
+#         user = authenticate(username=username, password=senha)
 
-        if user:
-            login_django(request, user)
-            return redirect('home')
-        else: 
-            return HttpResponse('Email ou senha inválidos.')
+#         if user:
+#             login_django(request, user)
+#             return redirect('home')
+#         else: 
+#             return HttpResponse('Email ou senha inválidos.')
 
 class HomeView(ListView):
     model = None
     template_name = 'home.html'
 
-    @method_decorator(login_required(login_url="/login"))
+    #@method_decorator(login_required(login_url="/login"))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
     
@@ -96,7 +96,7 @@ class CreatePostView(CreateView):
     template_name = 'create_post.html'
     success_url = reverse_lazy('home')
 
-    @method_decorator(login_required(login_url="/login"))
+    #@method_decorator(login_required(login_url="/login"))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
@@ -111,7 +111,7 @@ class AddCommentView(CreateView):
     form_class = CommentForm
     template_name = 'create_comment.html' 
 
-    @method_decorator(login_required(login_url="/login"))
+    #@method_decorator(login_required(login_url="/login"))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
     
@@ -127,7 +127,7 @@ class EditPostView(UpdateView):
     template_name = 'edit_post.html'
     fields = ['title', 'category', 'content', 'post_date']
 
-    @method_decorator(login_required(login_url="/login"))
+    #@method_decorator(login_required(login_url="/login"))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
@@ -136,7 +136,7 @@ class RemovePostView(DeleteView):
     template_name = 'remove_post.html'
     success_url = reverse_lazy('home')
 
-    @method_decorator(login_required(login_url="/login"))
+    #@method_decorator(login_required(login_url="/login"))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
