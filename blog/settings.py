@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'theportfolio.apps.TheportfolioConfig',
+    'poliplanner.apps.PoliplannerConfig',
     'widget_tweaks',
 ]
 

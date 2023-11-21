@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theportfolio', '0001_initial'),
+        ('poliplanner', '0001_initial'),
     ]
 
     operations = [

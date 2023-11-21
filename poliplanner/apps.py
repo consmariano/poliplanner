@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class TheportfolioConfig(AppConfig):
+class PoliplannerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'theportfolio'
+    name = 'poliplanner'

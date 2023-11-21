@@ -7,13 +7,13 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theportfolio', '0017_remove_post_category_post_category'),
+        ('poliplanner', '0017_remove_post_category_post_category'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='post',
             name='category',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='theportfolio.category'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poliplanner.category'),
         ),
     ]

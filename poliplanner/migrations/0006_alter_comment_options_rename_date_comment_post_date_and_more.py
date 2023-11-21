@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('theportfolio', '0005_rename_author_comment_post'),
+        ('poliplanner', '0005_rename_author_comment_post'),
     ]
 
     operations = [

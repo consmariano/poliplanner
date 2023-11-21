@@ -7,7 +7,7 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theportfolio', '0002_rename_body_post_content_post_post_date'),
+        ('poliplanner', '0002_rename_body_post_content_post_post_date'),
     ]
 
     operations = [

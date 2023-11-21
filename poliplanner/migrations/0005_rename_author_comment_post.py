@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('theportfolio', '0004_comment'),
+        ('poliplanner', '0004_comment'),
     ]
 
     operations = [

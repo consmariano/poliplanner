@@ -9,14 +9,14 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('theportfolio', '0007_post_comments'),
+        ('poliplanner', '0007_post_comments'),
     ]
 
     operations = [
         migrations.AddField(
             model_name='comment',
             name='post',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='post_comments', to='theportfolio.post'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='post_comments', to='poliplanner.post'),
         ),
         migrations.AlterField(
             model_name='comment',
