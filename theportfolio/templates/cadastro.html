@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Página Inicial{% endblock title %}
+
+{% block content %}
+
+<h1>Cadastro</h1>
+    <br>
+    <form action="{% url 'cadastro' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="Username" name="username">
+        <br>
+        <input type="text" placeholder="Email" name="email">
+        <br>
+        <input type="password" placeholder="Senha" name="senha">
+        <br>
+        <button type="submit">Cadastrar</button>
+        <br>
+    </form>    
+
+{% endblock content %}

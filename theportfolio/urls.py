@@ -1,8 +1,11 @@
 from django.urls import path
 from . import views
 from .views import HomeView, PostsListView, SinglePostDetailView, EditPostView, CreatePostView, RemovePostView, AddCommentView, AddCategoryView, CategoryView, ListCategoriesView
+from .views import login, cadastro
 
 urlpatterns = [
+    path('cadastro/', views.cadastro, name='cadastro'),
+    path('login/', views.login, name='login'),
     path('', HomeView.as_view(), name="home"),
     path('posts/', PostsListView.as_view(), name="post_list"),
     path('posts/<int:pk>/', SinglePostDetailView.as_view(), name="post_single"),
