@@ -16,13 +16,17 @@
     <br>
     <form action="{% url 'login' %}" method="POST">
         {% csrf_token %}
-        <input type="text" placeholder="Username" name="username">
+        
+        {{ form.username.label_tag }}
+        {{ form.username }}
         <br>
-        <input type="password" placeholder="Senha" name="senha">
+        
+        {{ form.possword.label_tag }}
+        {{ form.possword }}
         <br>
+        
         <button type="submit">Login</button>
         <br>
-        <a href="{% url 'cadastro' %}">Criar conta.</a>
+        <a href="{% url 'cadastro' %}">Criar conta</a>
     </form>    
-
 {% endblock content %}

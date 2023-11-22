@@ -4,7 +4,6 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpR
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Curso, Gerente, Professor, Oferecimento, Subject, Aluno, Tarefa, Comment
 from django.urls import reverse_lazy
-from .forms import PostForm, CommentForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as login_django
@@ -12,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.http import Http404, HttpResponseRedirect
 from django.contrib import messages
+from .forms import CustomUserForm, CommentForm
 
 def cadastro(request): 
     if request.method == 'GET':
@@ -33,21 +33,24 @@ def cadastro(request):
         return redirect('home')
 
 
-def login(request): 
-    if request.method == 'GET':
-        return render(request, 'login.html')
-    else: 
-        username = request.POST.get('username')
-        senha = request.POST.get('senha')
+def login(request):
+    if request.method == 'POST':
+        form = CustomUserForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['senha']
+            
+            user = authenticate(request, username=username, password=password)
 
-        user = authenticate(username=username, password=senha)
+            if user:
+                login_django(request, user)
+                return redirect('home')
+            else:
+                messages.error(request, 'Email ou senha inválidos.')
+    else:
+        form = CustomUserForm()
 
-        if user:
-            login_django(request, user)
-            return redirect('home')
-        else: 
-            messages.error(request, 'Email ou senha inválidos.')
-            return HttpResponseRedirect(reverse('login'))
+    return render(request, 'login.html', {'form': form})
 
 class HomeView(ListView):
     model = None
@@ -58,7 +61,7 @@ class HomeView(ListView):
         return super().dispatch(*args, **kwargs)
     
     def get_queryset(self):
-        return Tarefa.objects.order_by('-post_date')[:5] #I want to show the latest 5 posts. 
+        return Tarefa.objects.order_by('-deadline')[:5] #I want to show the latest 5 posts. 
 
 #Post virou tarefa e Category virou Subject
 
@@ -98,7 +101,7 @@ class SinglePostDetailView(DetailView):
 
 class CreatePostView(CreateView):
     model = Tarefa
-    form_class = PostForm
+    form_class = Tarefa
     template_name = 'create_post.html'
     success_url = reverse_lazy('home')
 
