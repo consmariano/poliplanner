@@ -1,26 +1,21 @@
 from django import forms
-from .models import Post, Comment, Category
-
-# choices = Category.objects.all().values_list('name','name')
-
-# choice_list = []
-# for item in choices:
-#     choice_list.append(item)
+from .models import  Curso, Gerente, Professor, Oferecimento, Subject, Aluno, Tarefa, Comment
 
 class PostForm(forms.ModelForm):
     class Meta:
-        model = Post
-        fields = ('title', 'author', 'category' , 'content', 'post_date')
+        model = Tarefa
+        fields = ('title', 'author', 'subject' , 'content', 'deadline')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}), 
             'author': forms.Select(attrs={'class': 'form-control'}),
+            'subject': forms.Select(attrs={'class': 'form-control'}),
             'content': forms.Textarea(attrs={'class': 'form-control'}), 
-            'post_date': forms.TextInput(attrs={'class': 'form-control'}), 
+            'deadline': forms.TextInput(attrs={'class': 'form-control'}), 
         }
 
         category = forms.ModelMultipleChoiceField(
-            queryset = Category.objects.all(),
+            queryset = Subject.objects.all(),
             widget=forms.CheckboxSelectMultiple
         )
 

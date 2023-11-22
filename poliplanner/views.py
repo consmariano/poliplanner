@@ -2,7 +2,7 @@ from typing import Any
 from django import http
 from django.shortcuts import render, get_object_or_404, redirect, reverse, HttpResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Comment, Category
+from .models import Curso, Gerente, Professor, Oferecimento, Subject, Aluno, Tarefa, Comment
 from django.urls import reverse_lazy
 from .forms import PostForm, CommentForm
 from django.contrib.auth.models import User
@@ -58,20 +58,22 @@ class HomeView(ListView):
         return super().dispatch(*args, **kwargs)
     
     def get_queryset(self):
-        return Post.objects.order_by('-post_date')[:5] #I want to show the latest 5 posts. 
+        return Tarefa.objects.order_by('-post_date')[:5] #I want to show the latest 5 posts. 
+
+#Post virou tarefa e Category virou Subject
 
 class PostsListView(ListView):
-    model = Post
+    model = Tarefa
     template_name = 'post_list.html'
     context_object_name = 'posts'
 
 class ListCategoriesView(ListView):
-    model = Category
+    model = Subject
     template_name = 'list_categories.html'
     context_object_name = 'list_categories'
 
 def CategoryView(request, cats):
-    cat = get_object_or_404(Category, id=cats)
+    cat = get_object_or_404(Subject, id=cats)
     category_posts = Post.objects.filter(category=cat)
 
     context = {
@@ -83,7 +85,7 @@ def CategoryView(request, cats):
     return render(request, "categories.html", context)
 
 class SinglePostDetailView(DetailView):
-    model = Post
+    model = Tarefa 
     template_name = 'post_single.html'
     context_object_name = 'post_single'
 
@@ -95,17 +97,17 @@ class SinglePostDetailView(DetailView):
             raise Http404("O item solicitado não existe.")
 
 class CreatePostView(CreateView):
-    model = Post
+    model = Tarefa
     form_class = PostForm
     template_name = 'create_post.html'
     success_url = reverse_lazy('home')
 
-    @method_decorator(login_required(login_url="/login"))
+    #@method_decorator(login_required(login_url="/login"))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
 class AddCategoryView(CreateView):
-    model = Category
+    model = Tarefa
     fields = '__all__'
     template_name = 'create_category.html'
     success_url = reverse_lazy('home')
@@ -115,7 +117,7 @@ class AddCommentView(CreateView):
     form_class = CommentForm
     template_name = 'create_comment.html' 
 
-    @method_decorator(login_required(login_url="/login"))
+    #@method_decorator(login_required(login_url="/login"))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
     
@@ -127,16 +129,16 @@ class AddCommentView(CreateView):
     success_url = reverse_lazy('home')
 
 class EditPostView(UpdateView):
-    model = Post
+    model = Tarefa
     template_name = 'edit_post.html'
     fields = ['title', 'category', 'content', 'post_date']
 
-    @method_decorator(login_required(login_url="/login"))
+    #@method_decorator(login_required(login_url="/login"))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
 class RemovePostView(DeleteView):
-    model = Post
+    model = Tarefa
     template_name = 'remove_post.html'
     success_url = reverse_lazy('home')
 
