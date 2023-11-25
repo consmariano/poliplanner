@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}Editar Tarefa{% endblock %}
-
 {% block content %}
-<h1>Editar Tarefa</h1>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button>Editar</button>
+{% if user.is_authenticated %}
+    <h1>Editar Tarefa</h1>
 
-<a href="{% url 'post_list' %}">Voltar</a>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Editar</button>
+
+    <a href="{% url 'post_list' %}">Voltar</a>
+{% endif %}
 
 {% endblock content %}

@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Editar Post do Blog{% endblock %}
-
 {% block content %}
+
+{% if user.is_authenticated %}
   <h1>Excluir Matéria</h1>
 
   {% if confirmar_exclusao %}
@@ -15,4 +16,6 @@
     <p>O item foi excluído com sucesso.</p>
     <a href="{% url 'post_list' %}">Voltar para a lista</a>
   {% endif %}
+{% endif %}
+
 {% endblock %}

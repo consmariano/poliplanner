@@ -14,10 +14,12 @@
             </a>
         {% endfor %}
         <br>
-        <small>
-            <a href="{% url 'edit_post' pk=post.pk %}">(Editar)</a>
-            <a href="{% url 'remove_post' pk=post.pk %}">(Remover)</a>
-        </small>
+        {% if user.is_authenticated %}
+            <small>
+                <a href="{% url 'edit_post' pk=post.pk %}">(Editar)</a>
+                <a href="{% url 'remove_post' pk=post.pk %}">(Remover)</a>
+            </small>
+        {% endif %}
     </li>
     <div>
         <p>Postado por: {{ post.author }}</p>

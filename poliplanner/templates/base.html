@@ -20,11 +20,17 @@
         </a>
         <nav id="navegacao-principal">
             <ul>
-                <li><a href="{% url 'post_list' %}">Tarefas</a></li>
-                <li><a href="{% url 'create_post' %}">Criar Tarefas</a></li>
-                <li><a href="{% url 'list_categories' %}">Matérias</a></li>
-                <li><a href="{% url 'register' %}">Cadastro</a></li>
-                <li><a href="{% url 'login' %}">Login</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'post_list' %}">Tarefas</a></li>
+                    <li><a href="{% url 'create_post' %}">Criar Tarefas</a></li>
+                    <li><a href="{% url 'list_categories' %}">Matérias</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'post_list' %}">Tarefas</a></li>
+                    <li><a href="{% url 'list_categories' %}">Matérias</a></li>
+                    <li><a href="{% url 'register' %}">Cadastro</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
             </ul>
         </nav>
 
