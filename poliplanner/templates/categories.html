@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Categoria{% endblock %}
+{% block title %}Matéria{% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
 
     {% for post in category_posts %}
 
-        <l1><a href="{% url 'post_single' pk=post.pk %}"><strong>{{ post.title }}</strong></a>
+        <l1><a href="{% url 'tarefa_single' pk=post.pk %}"><strong>{{ post.title }}</strong></a>
             <br>
             <small>
                 <a href="{% url 'edit_post' pk=post.pk %}">(Editar)</a>

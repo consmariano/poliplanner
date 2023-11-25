@@ -4,10 +4,10 @@
 
 {% block content %}
 
-<h1><i>Meu blog de indústria automotiva</i></h1>
-    <p>Esse é um blog exclusivo para conteúdos da indústria automotiva.
-    Meu objetivo é compartilhar minhas histórias e incentivar mais mulheres e entrarem nesse meio!</p>
-    <li><a href="{% url 'post_list' %}">Leia Posts</a></li>
-    <li><a href="{% url 'create_post' %}">Crie seu próprio post</a></li>
+<h1><i>PoliPlanner</i></h1>
+    <!-- só o aluno tem acesso -->
+    <li><a href="{% url 'post_list' %}">Acessar Tarefas</a></li> 
+    <!-- só o professor tem acesso -->
+    <li><a href="{% url 'create_post' %}">Crie Tarefas</a></li>
     
 {% endblock content %}
