@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'poliplanner.apps.PoliplannerConfig',
     'professor.apps.ProfessorConfig',
+    'calendarapp.apps.CalendarappConfig',
     'widget_tweaks',
 ]
 
