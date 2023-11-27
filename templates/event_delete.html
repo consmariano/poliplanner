@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Remover Tarefa
+{% endblock %}
+
+{% block content %}
+    <h1>Delete</h1>
+    <form action="" method="post">{% csrf_token %}
+        <p>Você tem certeza que deseja deletar essa tarefa?</p>
+        <button class="btn btn-danger ml-2" type="submit">Confirmar</button>
+    </form>
+{% endblock content %}

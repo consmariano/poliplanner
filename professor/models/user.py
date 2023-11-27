@@ -3,8 +3,7 @@ from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin,
-    Group,
-    Permission
+    Group
 )
 from django.utils.translation import gettext_lazy as _
 
@@ -59,13 +58,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_updated = models.DateTimeField(_("Last Updated"), auto_now=True)
 
     groups = models.ManyToManyField(Group, related_name='user_groups', blank=True)
-
     user_permissions = models.ManyToManyField(
-        Permission,
-        related_name='user_permissions_custom',  # Change 'user_permissions' to a unique name
+        'auth.Permission',
+        verbose_name=_('user permissions'),
+        related_name='user_permissions_professor',
         blank=True,
-    )
-
+        help_text=_('Specific permissions for this user.'),
+        )
 
     objects = UserManager()
 

@@ -5,6 +5,7 @@ from django.urls import reverse
 from calendarapp.models import EventAbstract
 from professor.models import User
 
+
 class EventManager(models.Manager):
     """ Event manager """
 
