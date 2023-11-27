@@ -64,11 +64,11 @@
                             <li>
                                 <a class="app-notification__item" href="javascript:;">
                                     <span class="app-notification__icon">
-                                        <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-success"></i><i class="fa fa-money fa-stack-1x fa-inverse"></i></span>
+                                        <span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span>
                                     </span>
                                     <div>
-                                        <p class="app-notification__message">Tarefa submetida</p>
-                                        <p class="app-notification__meta">3 dias atrás</p>
+                                        <p class="app-notification__message">Entrega de Lista em 1 semana</p>
+                                        <p class="app-notification__meta">Adicionado a 2 min atrás</p>
                                     </div>
                                 </a>
                             </li>
@@ -132,10 +132,12 @@
         <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
         <aside class="app-sidebar">
             <div class="app-sidebar__user">
-                <img class="app-sidebar__user-avatar" src="#" alt="User Image" height="50px" width="50px"/>
+                <div class="app-sidebar__user-icon-container">
+                    <i class="fa fa-user app-sidebar__user-icon"></i>
+                </div>
                 <div>
-                    <p class="app-sidebar__user-name">Professor: Nome</p>
-                    <p class="app-sidebar__user-designation">Engenheira Mecatrônica</p>
+                    <p class="app-sidebar__user-name">Nome</p>
+                    <p class="app-sidebar__user-designation">PMR Engenharia Mecatrônica</p>
                 </div>
             </div>
             <ul class="app-menu">
@@ -146,7 +148,7 @@
                     <a class="app-menu__item" href="{% url 'calendarapp:calendar' %}"><i class="app-menu__icon fa fa-calendar"></i><span class="app-menu__label">Calendário</span></a>
                 </li>
                 <li class="treeview">
-                    <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Eventos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+                    <a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Tarefas</span><i class="treeview-indicator fa fa-angle-right"></i></a>
                     <ul class="treeview-menu">
                         <li>
                             <a class="treeview-item" href="{% url 'calendarapp:running_events' %}"><i class="icon fa fa-circle-o"></i> Atuais</a>

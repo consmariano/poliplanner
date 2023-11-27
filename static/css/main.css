@@ -15211,6 +15211,14 @@ be a descendant of the grid when it is being dragged.
   margin-right: 15px;
 }
 
+.app-sidebar__user-icon-container {
+  width: 50px; 
+  height: 50px;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .app-sidebar__user-name {
   font-size: 17px;
   line-height: 1.3;
