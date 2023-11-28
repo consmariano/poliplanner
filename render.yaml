@@ -2,6 +2,6 @@ services:
   - name: web
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: "blog.settings"
+        value: "poliplanner.settings"
     buildCommand: "python manage.py migrate && python manage.py collectstatic --noinput"
-    startCommand: "gunicorn blog.wsgi:application -b 127.0.0.1:$PORT"
+    startCommand: "gunicorn poliplanner.wsgi:application -b 127.0.0.1:$PORT"
