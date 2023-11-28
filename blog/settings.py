@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-rk@d)c$-zulc71&*san6gwpt=@(4@!02mc&v2r=ef9od8(%0=h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
@@ -88,10 +90,10 @@ DATABASES = {
     }
 }
 
-#if os.environ.get("DATABASE_URL"):
-#    DATABASES["default"] = dj_database_url.config(
-#        conn_max_age=600,
-#    )
+if os.environ.get("DATABASE_URL"):
+    DATABASES["default"] = dj_database_url.config(
+        conn_max_age=600,
+    )
 
 
 # Password validation
