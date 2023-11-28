@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Nova Matéria{% endblock %}
+
+<!-- só o professor tem acesso -->
+
+{% block content %}
+  <h1>Adicionar Matéria</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <button type="submit">Adicionar</button>
+  </form>
+{% endblock content %}
+

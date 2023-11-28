@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Página Inicial{% endblock title %}
+
+{% block content %}
+
+<h1><i>PoliPlanner</i></h1>
+    <!-- só o aluno tem acesso -->
+    <li><a href="{% url 'post_list' %}">Acessar Tarefas</a></li> 
+    <!-- só o professor tem acesso -->
+    <li><a href="{% url 'create_post' %}">Crie Tarefas</a></li>
+    
+{% endblock content %}

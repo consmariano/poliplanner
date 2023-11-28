@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Editar Post do Blog{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+  <h1>Excluir Matéria</h1>
+
+  {% if confirmar_exclusao %}
+    <p>Você tem certeza que deseja excluir "{{ post.title }}"?</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit">Sim, excluir</button>
+    </form>
+    <a href="{% url 'post_list' %}">Cancelar</a>
+  {% else %}
+    <p>O item foi excluído com sucesso.</p>
+    <a href="{% url 'post_list' %}">Voltar para a lista</a>
+  {% endif %}
+{% endif %}
+
+{% endblock %}

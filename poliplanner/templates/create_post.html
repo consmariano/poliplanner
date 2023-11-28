@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Criar Tarefa{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+  <h1>Adicionar Tarefa</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <button type="submit">Postar</button>
+  </form>
+{% else %}
+  <p>Você precisa estar cadastrado para realizar essa ação.</p>
+{% endif %}
+
+{% endblock content %}
+

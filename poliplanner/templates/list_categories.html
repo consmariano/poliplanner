@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Categorias{% endblock %}
+
+{% block content %}
+<h1>Todas as Matérias</h1>
+
+{% for category in list_categories %}
+    <li>
+        {% if category.name %}
+            <a href="{% url 'categories' cats=category.id %}">
+                {{ category.name }}
+            </a>
+        {% else %}
+            {{ category.name }}
+        {% endif %}
+    </li>
+{% endfor %}
+
+{% endblock content %}
