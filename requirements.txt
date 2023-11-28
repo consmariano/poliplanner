@@ -1,6 +1,6 @@
 asgiref==3.7.2
 dj-database-url==2.1.0
-Django>=1.0,<3.0
+Django>=1.0,<3.5
 django-widget-tweaks>=0,<1.5
 gunicorn==21.2.0
 packaging==23.2
