@@ -46,11 +46,11 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """ Custom user model """
     USER_TYPE_CHOICES = (
-        ('Estudande', 'Sou um Estudante'),
+        ('Estudante', 'Sou um Estudante'),
         ('Professor', 'Sou um Professor'),
         # Add more choices if needed
     )
-    user_type = models.CharField(default="Estudande",max_length=10, choices=USER_TYPE_CHOICES)
+    user_type = models.CharField(default="Estudante",max_length=10, choices=USER_TYPE_CHOICES)
     # Other fields as needed
 
     email = models.EmailField(

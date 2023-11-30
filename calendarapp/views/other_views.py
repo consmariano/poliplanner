@@ -69,16 +69,7 @@ def create_event(request):
             end_time=end_time,
         )
         return HttpResponseRedirect(reverse("calendarapp:calendar"))
-    
-    #############  Mudei Aqui ################3
-
-    user = request.user
-    user_type = {
-        'user_type': user.user_type if user.is_authenticated else None,
-        # Other context variables you may have
-    }
-
-    return render(request, "event.html", {"form": form}, user_type)
+    return render(request, "event.html", {"form": form})
 
 
 class EventEdit(generic.UpdateView):

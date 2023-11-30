@@ -13,9 +13,14 @@ class DashboardView(LoginRequiredMixin, View):
         events = Event.objects.get_all_events(user=request.user)
         running_events = Event.objects.get_running_events(user=request.user)
         latest_events = Event.objects.filter(user=request.user).order_by("-id")[:10]
+
+        user = request.user
+
         context = {
             "total_event": events.count(),
             "running_events": running_events,
             "latest_events": latest_events,
+            ######################## Mudei a partir daqui #################
+            "user_type": user.user_type,
         }
         return render(request, self.template_name, context)

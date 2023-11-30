@@ -4,9 +4,24 @@
 {% block title %}Dashboard{% endblock title %}
 
 {% block breadcrumb %}
+    {% comment %}                   Mudei Aqui            {% endcomment %}
+    {% comment %} <div>
+        <h1><i class="fa fa-dashboard"></i> Dashboard </h1>
+    </div> {% endcomment %}
+
+    {% if user_type == 'Professor' %}
     <div>
-        <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
+        <h1><i class="fa fa-dashboard"></i> Bem vindo, Professor</h1>
     </div>
+    {% elif user_type == 'Estudante' %}
+    <div>
+        <h1><i class="fa fa-dashboard"></i> Bem vindo, Estudante </h1>
+    </div>
+    {% endif %} 
+
+    <!--    Parei de mudar Aqui   -->
+
+
     <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
