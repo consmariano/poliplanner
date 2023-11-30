@@ -50,7 +50,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         ('Professor', 'Sou um Professor'),
         # Add more choices if needed
     )
-    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES)
+    user_type = models.CharField(default="Estudande",max_length=10, choices=USER_TYPE_CHOICES)
     # Other fields as needed
 
     email = models.EmailField(
