@@ -26,8 +26,10 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["email"]
-        widgets = {"email": forms.EmailInput(attrs={"class": "form-control"})}
+        fields = ("email", "user_type")
+        widgets = {"email": forms.EmailInput(attrs={"class": "form-control"}),
+                   'user_type': forms.Select(choices=User.USER_TYPE_CHOICES)}
+        
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")

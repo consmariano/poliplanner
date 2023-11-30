@@ -57,11 +57,19 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label class="label" for="password">Senha</label>
+                                                        <label class="label" for="password">Repita sua senha</label>
                                                         {{ form.password2 }}
                                                         <span class="text-danger">{{ form.errors.password2 }}</span>
                                                     </div>
                                                 </div>
+                                                
+                                                <div class="col-md-12">
+                                                    <div class="form-group"> 
+                                                            <label for="user_type">Selecione uma opção:</label>
+                                                            {{ form.user_type }}
+                                                    </div>
+                                                </div>
+
                                                 <div class="col-md-12 my-4">
                                                     <div class="form-group">
                                                         <div class="w-100">
@@ -81,7 +89,7 @@
                                             </div>
                                         </form>
                                         <div class="w-100">
-                                            <p class="mt-4">Já sou membro da comunidade!<a href="{% url 'professor:signin' %}">Login</a></p>
+                                            <p class="mt-4">Já sou membro da comunidade! <a href="{% url 'professor:signin' %}">Login</a></p>
                                         </div>
                                     </div>
                                 </div>
