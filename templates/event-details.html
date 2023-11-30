@@ -18,6 +18,25 @@ Detalhes da Tarefa
             <p>{{ event.description }}</p>
         </div>
         <hr>
+        <section>
+            <header>
+                <h3>Comentários</h3>
+            </header>
+            <ul>
+                {% if poliplanner.create_comment.all %}
+                    {% for comment in poliplanner.create_comment.all %}
+                        <figure>
+                            <blockquote>
+                                "{{ comment.text }}"
+                            </blockquote>
+                            <figcaption>—{{ comment.author }}</figcaption>
+                        </figure>
+                    {% endfor %}
+                {% else %}
+                    <p>Ainda não existe nenhum comentário para esta lista.</p>
+                {% endif %}
+            </ul>
+        </section>
         <div class="clearfix">
             <h4 class="left" > Members of this Event</h4>
             <a class="btn btn-success right" href="{% url 'calendarapp:add_eventmember' event.id %}"> Adicionar alunos </a>

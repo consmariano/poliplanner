@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 {% block title %}Comentar{% endblock %}
-
 {% block content %}
-<h1>Adicionar Comentário</h1>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Comentar</button>
-</form>
+
+{% if user.is_authenticated %}
+    <h1>Adicionar Comentário</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Comentar</button>
+    </form>
+{% else %}
+  <p>Você precisa estar cadastrado para realizar essa ação.</p>
+{% endif %}
+
 <a href="{% url 'post_list' %}">Voltar para Posts</a>
 {% endblock %}
