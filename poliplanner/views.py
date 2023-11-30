@@ -145,3 +145,18 @@ class RemovePostView(DeleteView):
         context = super().get_context_data(**kwargs)
         context['confirmar_exclusao'] = True  # Adiciona uma variável de confirmação ao contexto
         return context
+
+def comment_page(request):
+    comments = Comment.objects.all()
+    
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.user = request.user 
+            new_comment.save()
+            return redirect('comment_page')  
+        
+        form = CommentForm()
+
+    return render(request, 'create_comment.html', {'form': form, 'comments': comments})

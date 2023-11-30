@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Comentar{% endblock %}
+{% block title %}Comentarios{% endblock %}
 {% block content %}
 
 {% if user.is_authenticated %}
+  {% for comment in comments %}
+      <p>{{ comment.user.username }} - {{ comment.text }}</p>
+  {% endfor %}
     <h1>Adicionar Comentário</h1>
 
     <form method="POST">

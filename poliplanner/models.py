@@ -42,7 +42,8 @@ class Comment(models.Model):
         return '%s - %s' % (self.post.title, self.username)
 
     class Meta:
-        ordering = ['-post_date']
+        model = Comment
+        ordering = ['content']
     
 @receiver(post_save, sender=Comment)
 def post_save_receiver(sender, instance, created, **kwargs):
